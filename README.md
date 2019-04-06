@@ -1,15 +1,15 @@
 ### Date created
-Include the date you created this project and README file.
+February 2019
 
 ### Project Title
-Replace the Project Title
+Bikeshare Insights
 
 ### Description
-Describe what your project is about and what it does
+The Bikeshare Insights project aims to unvail and compare the usage pattern of bicycle-sharing systems in the cities of Washington, Chicago, and New York. Statistics computed and interpreted include #1 Popular times of travel, #2 Popular stations and trips, #3 Trip duration, and #4 User info.  
 
 ### Files used
-Include the files used
+bikeshare.py - file to compute the statistics
+chicago.csv, whashington.csv, and new_york_city.csv - data files 
 
 ### Credits
-It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
-
+The project is based on data provided by the bicycle-sharing provider "Motivate" and has been made accessible within the Udacity course to learn programming for data science. 
