@@ -192,7 +192,7 @@ def print_raw_data(df):
         if answer == 'yes' or answer == 'no':
             answer_correct = True
         else:
-            print('You provided an incorrect input, please type either yes or no.')
+            print('The input provided had an incorrect data type, please type either yes or no.')
 
     print('-'*40)
     loop = int(0)
