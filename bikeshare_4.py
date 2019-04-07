@@ -18,7 +18,7 @@ def get_filters():
     print('Hello! Let\'s explore some US bikeshare data!')
     # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
     correct_input = False
-    
+
     while correct_input == False:
         city = str(input('What cities\' data would you like to explore (Chicago, New York City, or Washington)? ')).lower()
 
@@ -32,7 +32,7 @@ def get_filters():
             correct_input = True
         else:
             print('Ooops, some inputs did not match with the expected values. Please try again.')
-            
+
     print('-'*40)
     return city, month, day
 
@@ -65,7 +65,7 @@ def load_data(city, month, day):
         # use the index of the months list to get the corresponding int
         months = ['january', 'february', 'march', 'april', 'may', 'june']
         month = months.index(month) + 1
-    
+
         # filter by month to create the new dataframe
         df = df[df['month'] == month]
 
@@ -92,23 +92,23 @@ def time_stats(df):
                   '5' : 'May',
                   '6' : 'June'
                   }
-    
-    max_month = df['month'].value_counts().index[0] 
+
+    max_month = df['month'].value_counts().index[0]
     max_month_occur = df['month'].value_counts().max()
-    
-   
+
+
     print('The most common MONTH is ' + month_dict[str(max_month)] + ' with ' + str(max_month_occur) + ' Times of Travel.')
-      
+
     # display the most common day of week
     max_day = df['day_of_week'].value_counts().index[0]
     max_day_occur = df['day_of_week'].value_counts().max()
-  
+
     print('The most common DAY is ' + max_day + ' with ' + str(max_day_occur) + ' Times of Travel.')
-    
+
     # display the most common start hour
     max_hour = df['Start Time'].dt.hour.value_counts().index[0]
    # print(max_hour.value_counts().index[0])
-    
+
     print('The most common STARTING HOUR is ' + str(max_hour) + ' hours.')
 
     print("\nThis took %s seconds." % (time.time() - start_time))
@@ -124,11 +124,11 @@ def station_stats(df):
     # display most commonly used start station
     max_start_station = df['Start Station'].value_counts().index[0]
     print('The most commonly used START STATION is: ' + max_start_station)
-    
+
     # display most commonly used end station
     max_end_station = df['End Station'].value_counts().index[0]
     print('The most commonly used END STATION is: ' + max_end_station)
-   
+
     # display most frequent combination of start station and end station trip
 
 
@@ -167,7 +167,7 @@ def user_stats(df):
         print(df['Gender'].value_counts())
     except:
         print('Unfortunately, there is no Gender data for this city available')
-        
+
     # Display earliest, most recent, and most common year of birth
     try:
         print('EARLIEST year of birth is: ' + str(int(df['Birth Year'].min())))
@@ -175,28 +175,29 @@ def user_stats(df):
         print('Most COMMON year of birth is: ' + str(int(df['Birth Year'].value_counts().index[0])))
     except:
         print('Unfortunately, there is no Birth Year data for this city available')
-        
+
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
-    
-    
-    
+
+
+
 def print_raw_data(df):
+    """Prompts users whether or not to display raw trip data."""
     answer_correct = False
-    
+
     while answer_correct == False:
         answer = str(input('Would you like to see individual trip raw data (yes or no)? ')).lower()
         if answer == 'yes' or answer == 'no':
             answer_correct = True
-        else: 
+        else:
             print('You provided an incorrect input, please type either yes or no.')
-            
+
     print('-'*40)
     loop = int(0)
     while answer == 'yes':
         answer_correct = False
         for i in range(5):
-            try: 
+            try:
                 print('Trip Number: ' + str(df.iloc[loop + i, 0]))
                 print('Start Station: ' + str(df['Start Station'].iloc[loop + i]))
                 print('End Station: ' + str(df['End Station'].iloc[loop + i]))
@@ -210,16 +211,16 @@ def print_raw_data(df):
             except:
                 print('End of File')
                 break
-        loop += 5 
-        
+        loop += 5
+
         while answer_correct == False:
             answer = str(input('Would you like to see individual trip raw data (yes or no)? ')).lower()
             if answer == 'yes' or answer == 'no':
                 answer_correct = True
-            else: 
+            else:
                 print('You provided an incorrect input, please type either yes or no.')
-    
-    
+
+
 def main():
     while True:
         city, month, day = get_filters()
