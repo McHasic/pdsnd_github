@@ -6,6 +6,36 @@ CITY_DATA = { 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
               'washington': 'washington.csv' }
 
+def get_filters():
+    """
+    Asks user to specify a city, month, and day to analyze.
+
+    Returns:
+        (str) city - name of the city to analyze
+        (str) month - name of the month to filter by, or "all" to apply no month filter
+        (str) day - name of the day of week to filter by, or "all" to apply no day filter
+    """
+    print('Hello! Let\'s explore some US bikeshare data!')
+    # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
+    correct_input = False
+
+    while correct_input == False:
+        city = str(input('What cities\' data would you like to explore (Chicago, New York City, or Washington)? ')).lower()
+
+    # get user input for month (all, january, february, ... , june)
+        month = str(input('Which month\'s data would you like to explore (all, January, February, ... , June)? ')).lower()
+
+    # get user input for day of week (all, monday, tuesday, ... sunday)
+        day = str(input('Which day\'s data would you like to explore (all, Monday, Tuesday, ... Sunday)? ')).lower()
+
+        if (city == "chicago" or city == "new york city" or city == "washington") and (month == 'all' or month == 'january' or month == 'february' or month == 'march' or month == 'april' or month == 'may' or month == 'june') and (day == 'all' or day == 'monday' or day == 'tuesday' or day == 'wednesday' or day == 'thursday' or day == 'friday' or day == 'saturday' or day == 'sunday'):
+            correct_input = True
+        else:
+            print('Ooops, some inputs did not match with the expected values. Please try again.')
+
+    print('-'*40)
+    return city, month, day
+
 
 def load_data(city, month, day):
     """
@@ -185,6 +215,7 @@ def user_stats(df):
 
 
 def print_raw_data(df):
+    """Prompts users whether or not to display raw trip data."""
     answer_correct = False
 
     while answer_correct == False:
